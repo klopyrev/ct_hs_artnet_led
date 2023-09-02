@@ -1,0 +1,14 @@
+{
+  "domain": "ct_hs_artnet_led",
+  "name": "Color Temperature Hue Saturation Artnet LED",
+  "integration_type": "hub",
+  "codeowners": [
+      "@klopyrev"
+  ],
+  "iot_class": "local_push",
+  "requirements": [
+      "pyartnet==1.0.1"
+  ],
+  "loggers": "pyartnet",
+  "version": "0.0.1"
+}
