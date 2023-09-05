@@ -25,7 +25,7 @@ light:
     home_assistant_state_update_frequency_secs: 1
 
     default_color_temp_kelvin: 4000
-    default_transition_secs: 10
+    default_transition_secs: 0
 
     entities:
       - name: Test
