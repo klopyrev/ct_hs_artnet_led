@@ -164,7 +164,7 @@ class DmxLight(LightEntity, RestoreEntity):
         target_state = copy.deepcopy(self._state)
 
         if ATTR_BRIGHTNESS in kwargs:
-            target_state.brightness = kwargs[ATTR_BRIGHTNESS] / 255
+            target_state.brightness = kwargs[ATTR_BRIGHTNESS] / 255 * 100
         elif self._state.brightness == 0:
             # Default to full on.
             target_state.brightness = 100
