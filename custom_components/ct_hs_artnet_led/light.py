@@ -128,7 +128,7 @@ class DmxLight(LightEntity, RestoreEntity):
 
     @property
     def brightness(self) -> int | None:
-        return self._state.brightness
+        return int(self._state.brightness / 100 * 255)
 
     @property
     def rgbww_color(self) -> tuple[int, int, int, int, int] | None:
@@ -164,10 +164,10 @@ class DmxLight(LightEntity, RestoreEntity):
         target_state = copy.deepcopy(self._state)
 
         if ATTR_BRIGHTNESS in kwargs:
-            target_state.brightness = kwargs[ATTR_BRIGHTNESS]
+            target_state.brightness = kwargs[ATTR_BRIGHTNESS] / 255
         elif self._state.brightness == 0:
             # Default to full on.
-            target_state.brightness = 255
+            target_state.brightness = 100
 
         has_color_temp_kelvin = False
         if ATTR_WHITE in kwargs:
