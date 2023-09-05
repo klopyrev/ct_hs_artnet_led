@@ -1,0 +1,104 @@
+logger:
+  logs:
+    custom_components.ct_hs_artnet_led: debug
+#     pyartnet: debug
+light:
+  - platform: ct_hs_artnet_led
+    ip: 192.168.1.6
+    port: 6454
+    universe: 0
+
+    # The pyartnet library doesn't do correct time calculation, since it doesn't
+    # account for the fact that:
+    #   1) Computation takes time.
+    #   2) There are other things running on the CPU, so task doesn't always get
+    #      called at precisely the right time.
+    # What we do instead is ask pyartnet to compute the fade with waits of 1/240
+    # seconds in between each computation. Then, we do more accurate time
+    # calculations in our library.
+    intended_fade_fps: 60
+    check_fps: 240
+
+    resend_universe_every_secs: -1
+
+    # How often home assistant state is updated during fades.
+    home_assistant_state_update_frequency_secs: 0.1
+
+    default_color_temp_kelvin: 4000
+    default_transition_secs: 10
+
+    entities:
+      - name: Test
+        type: astera
+        channel: 1
+      # - name: Bedroom Chandelier 1
+      #   type: astera
+      #   channel: 129
+      # - name: Bedroom Chandelier 2
+      #   type: astera
+      #   channel: 136
+      # - name: Bedroom Chandelier 3
+      #   type: astera
+      #   channel: 143
+      # - name: Bedroom Chandelier 4
+      #   type: astera
+      #   channel: 150
+      # - name: Bedroom Chandelier 5
+      #   type: astera
+      #   channel: 157
+      # - name: Aputure
+      #   channel: 269
+      #   type: aputure
+    types:
+      # 92: D16 CCT GM H SAT (PIXEL = 1; STROBE = OFF)
+      # https://astera-led.com/wp-content/uploads/FP5_NYX_Bulb_DMX_Profiles_V1.pdf
+      #
+      # Used for Astera NYX, Titan tube and Helios tube.
+      - name: astera
+        min_color_temp_kelvin: 1750
+        max_color_temp_kelvin: 9910
+        channels:
+          - type: brightness
+            bytes: 2
+            endianness: "big"
+          - type: color_temp_kelvin
+          - type: constant # g/m point
+            value: 0
+          - type: hue
+            bytes: 2
+            endianness: "big"
+          - type: saturation
+            # Based on observations to match the AsteraApp saturation.
+            # Otherwise, the color becomes saturated too quickly.
+            # https://docs.google.com/spreadsheets/d/14SnfmF436rOzdZdsKhBCxaw766vX2DFV6Sj8Bg6a96U/edit?usp=sharing
+            correction_polynomial:
+              - 0
+              - -0.0586
+              - 0.0267
+              - -0.000565
+              - 0.00000406
+      # Mode 5: HSI
+      # https://www.aputure.com/wp-content/uploads/2022/07/MT-Pro-DMX-Profile-Specification-V1.2.pdf
+      #
+      # Used for Aputure MT Pro.
+      - name: aputure
+        min_color_temp_kelvin: 2000
+        max_color_temp_kelvin: 10000
+        channels:
+          - type: brightness
+          - type: hue
+          - type: saturation
+            # Based on observations to match the AsteraApp saturation.
+            # This is only a small correction.
+            # https://docs.google.com/spreadsheets/d/14SnfmF436rOzdZdsKhBCxaw766vX2DFV6Sj8Bg6a96U/edit#gid=1840347992
+            correction_polynomial:
+              - -1.82
+              - 0.909
+              - -0.00846
+              - 0.000115
+              - -0.000000175
+          - type: color_temp_kelvin
+            offset: 11
+          - type: constant # strobe
+            value: 0
+
