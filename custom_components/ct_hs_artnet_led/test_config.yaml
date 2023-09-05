@@ -22,7 +22,7 @@ light:
     resend_universe_every_secs: -1
 
     # How often home assistant state is updated during fades.
-    home_assistant_state_update_frequency_secs: 0.1
+    home_assistant_state_update_frequency_secs: 1
 
     default_color_temp_kelvin: 4000
     default_transition_secs: 10
@@ -31,24 +31,9 @@ light:
       - name: Test
         type: astera
         channel: 1
-      # - name: Bedroom Chandelier 1
-      #   type: astera
-      #   channel: 129
-      # - name: Bedroom Chandelier 2
-      #   type: astera
-      #   channel: 136
-      # - name: Bedroom Chandelier 3
-      #   type: astera
-      #   channel: 143
-      # - name: Bedroom Chandelier 4
-      #   type: astera
-      #   channel: 150
-      # - name: Bedroom Chandelier 5
-      #   type: astera
-      #   channel: 157
-      # - name: Aputure
-      #   channel: 269
-      #   type: aputure
+      - name: Aputure
+        channel: 269
+        type: aputure
     types:
       # 92: D16 CCT GM H SAT (PIXEL = 1; STROBE = OFF)
       # https://astera-led.com/wp-content/uploads/FP5_NYX_Bulb_DMX_Profiles_V1.pdf
