@@ -249,8 +249,8 @@ class DmxLight(LightEntity, RestoreEntity):
                 self._ha_state_update_freq_secs,
                 self.async_schedule_update_ha_state,
             )
-        faders = []
-        for i in range(self._coders.num_channels()):
-            faders.append(Fader(i, controller))
+            faders = []
+            for i in range(self._coders.num_channels()):
+                faders.append(Fader(i, controller))
 
-        self._channel.set_fade(faders, 1)
+            self._channel.set_fade(faders, 1)
