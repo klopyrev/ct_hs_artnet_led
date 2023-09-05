@@ -206,6 +206,12 @@ class DmxLight(LightEntity, RestoreEntity):
             target_state = self._previous_state
             self._previous_state = None
 
+        # This deals with a bug in Astera lights where if you fade from
+        # saturated to unsaturated, even though the hue is updated only once
+        # saturation is 0, the hue change is still visible.
+        if target_state.saturation == 0:
+            target_state.hue = self._state.hue
+
         await self._run_fade(target_state, transition_secs)
 
     async def async_turn_off(self, **kwargs):

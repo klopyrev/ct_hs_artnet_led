@@ -73,34 +73,35 @@ UPDATE_STATE_FREQUENCY_SECS = 1
 # FADE_DURATION_SECS = 4
 # WAIT_SECS = 1
 
-# Unsaturated to saturated fade, and back.
-# START_BRIGHTNESS = 50
-# START_COLOR_TEMP = 4000
-# START_HUE = 0
-# START_SATURATION = 0
-# END_BRIGHTNESS = 50
-# END_COLOR_TEMP = 4000
-# END_HUE = 300
-# END_SATURATION = 100
-# FADE_DURATION_SECS = 5
-# WAIT_SECS = 1
+# Saturated to unsaturated fade, and back.
+START_BRIGHTNESS = 130
+START_COLOR_TEMP = 2089
+START_HUE = 22.824
+START_SATURATION = 100.0
+END_BRIGHTNESS = 255
+END_COLOR_TEMP = 5516
+END_HUE = 22.824
+END_SATURATION = 0
+FADE_DURATION_SECS = 1
+WAIT_SECS = 1
 
 # Off to on and back.
-START_BRIGHTNESS = 0
-START_COLOR_TEMP = 1750
-START_HUE = 0
-START_SATURATION = 0
-END_BRIGHTNESS = 70
-END_COLOR_TEMP = 4000
-END_HUE = 340
-END_SATURATION = 50
-FADE_DURATION_SECS = 5
-WAIT_SECS = 1
+# START_BRIGHTNESS = 0
+# START_COLOR_TEMP = 1750
+# START_HUE = 0
+# START_SATURATION = 0
+# END_BRIGHTNESS = 70
+# END_COLOR_TEMP = 4000
+# END_HUE = 340
+# END_SATURATION = 50
+# FADE_DURATION_SECS = 5
+# WAIT_SECS = 1
 
 
 async def main():
     logging.basicConfig(level=logging.INFO)
     logging.getLogger("ct_hs_artnet_led").setLevel(level=logging.DEBUG)
+    # logging.getLogger("pyartnet").setLevel(level=logging.DEBUG)
 
     with open("ct_hs_artnet_led/test_config.yaml", encoding="ascii") as f:
         config = yaml.safe_load(f)
@@ -116,7 +117,7 @@ async def main():
         start_refresh_task=False,
     )
     universe = node.add_universe(0)
-    channel = universe.add_channel(start=129, width=coders.num_channels(), byte_size=1)
+    channel = universe.add_channel(start=1, width=coders.num_channels(), byte_size=1)
 
     start_state = DmxLightState(
         brightness=START_BRIGHTNESS,
