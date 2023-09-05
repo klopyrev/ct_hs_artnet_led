@@ -128,7 +128,7 @@ class DmxLight(LightEntity, RestoreEntity):
 
     @property
     def brightness(self) -> int | None:
-        return int(self._state.brightness / 100 * 255)
+        return int(round(self._state.brightness / 100 * 255))
 
     @property
     def rgbww_color(self) -> tuple[int, int, int, int, int] | None:
