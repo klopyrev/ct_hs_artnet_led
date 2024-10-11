@@ -1,0 +1,230 @@
+light:
+  - platform: ct_hs_artnet_led
+    # ip: lumenradio.home.arpa
+    ip: bb0eb1af-artdmx-merger
+    port: 6454
+    universe: 0
+
+    intended_fade_fps: 60
+    check_fps: 240
+
+    resend_universe_every_secs: 20
+
+    home_assistant_state_update_frequency_secs: 1
+
+    default_color_temp_kelvin: 4000
+    default_transition_secs: 0
+
+    entities:
+      - name: Test
+        type: astera
+        channel: 1
+      - name: Kelvin
+        type: kelvin
+        channel: 8
+      - name: Balcony Ceiling Left
+        type: astera
+        channel: 101
+      - name: Balcony Ceiling Right
+        type: astera
+        channel: 108
+      - name: Bathroom Bath
+        type: astera
+        channel: 115
+      - name: Bathroom Shower
+        type: astera
+        channel: 122
+      - name: Bedroom Chandelier 1
+        type: astera
+        channel: 129
+      - name: Bedroom Chandelier 2
+        type: astera
+        channel: 136
+      - name: Bedroom Chandelier 3
+        type: astera
+        channel: 143
+      - name: Bedroom Chandelier 4
+        type: astera
+        channel: 150
+      - name: Bedroom Chandelier 5
+        type: astera
+        channel: 157
+      - name: Bedroom Floor Lamp Corridor
+        type: astera
+        channel: 164
+      - name: Bedroom Floor Lamp Couch
+        type: astera
+        channel: 171
+      - name: Bedroom Floor Lamp Wall
+        type: astera
+        channel: 178
+      - name: Living Room Chandelier 1
+        type: astera
+        channel: 185
+      - name: Living Room Chandelier 2
+        type: astera
+        channel: 192
+      - name: Living Room Chandelier 3
+        type: astera
+        channel: 199
+      - name: Living Room Chandelier 4
+        type: astera
+        channel: 206
+      - name: Living Room Corridor Floor Lamp
+        type: astera
+        channel: 213
+      - name: Living Room Window Floor Lamp
+        type: astera
+        channel: 220
+      - name: Second Bathroom Shower
+        type: astera
+        channel: 227
+      - name: Second Bedroom Chandelier 1
+        type: astera
+        channel: 234
+      - name: Second Bedroom Chandelier 2
+        type: astera
+        channel: 241
+      - name: Second Bedroom Chandelier 3
+        type: astera
+        channel: 248
+      - name: Second Bedroom Chandelier 4
+        type: astera
+        channel: 255
+      - name: Second Bedroom Chandelier 5
+        type: astera
+        channel: 262
+      - name: Living Room TV Wall Left
+        channel: 269
+        type: aputure
+      - name: Living Room TV Wall Right
+        channel: 274
+        type: aputure
+      - name: Bedroom Bed Left
+        channel: 279
+        type: aputure
+      - name: Bedroom Bed Right
+        channel: 284
+        type: aputure
+      - name: Bedroom Closet Left
+        type: astera
+        channel: 400
+      - name: Bedroom Closet Right
+        type: astera
+        channel: 407
+      - name: Entryway Closet
+        type: astera
+        channel: 414
+      - name: Second Bedroom Closet
+        type: astera
+        channel: 421
+      - name: Utility Closet
+        type: astera
+        channel: 428
+    types:
+      # 92: D16 CCT GM H SAT (PIXEL = 1; STROBE = OFF)
+      # https://astera-led.com/wp-content/uploads/FP5_NYX_Bulb_DMX_Profiles_V1.pdf
+      #
+      # Used for Astera NYX, Titan tube and Helios tube.
+      - name: astera
+        min_color_temp_kelvin: 1750
+        max_color_temp_kelvin: 9910
+        channels:
+          - type: brightness
+            bytes: 2
+            endianness: "big"
+          - type: color_temp_kelvin
+          - type: constant # g/m point
+            value: 0
+          - type: hue
+            bytes: 2
+            endianness: "big"
+          - type: saturation
+            # Based on observations to match the AsteraApp saturation.
+            # Otherwise, the color becomes saturated too quickly.
+            # https://docs.google.com/spreadsheets/d/14SnfmF436rOzdZdsKhBCxaw766vX2DFV6Sj8Bg6a96U/edit?usp=sharing
+            correction_polynomial:
+              - 0
+              - -0.0586
+              - 0.0267
+              - -0.000565
+              - 0.00000406
+      # Mode 5: HSI
+      # https://www.aputure.com/wp-content/uploads/2022/07/MT-Pro-DMX-Profile-Specification-V1.2.pdf
+      #
+      # Used for Aputure MT Pro.
+      - name: aputure
+        min_color_temp_kelvin: 2000
+        max_color_temp_kelvin: 10000
+        channels:
+          - type: brightness
+          - type: hue
+          - type: saturation
+            # Based on observations to match the AsteraApp saturation.
+            # This is only a small correction.
+            # https://docs.google.com/spreadsheets/d/14SnfmF436rOzdZdsKhBCxaw766vX2DFV6Sj8Bg6a96U/edit#gid=1840347992
+            correction_polynomial:
+              - -1.82
+              - 0.909
+              - -0.00846
+              - 0.000115
+              - -0.000000175
+          - type: color_temp_kelvin
+            offset: 11
+          - type: constant # strobe
+            value: 0
+      - name: kelvin
+        min_color_temp_kelvin: 2000
+        max_color_temp_kelvin: 20000
+        channels:
+          - type: brightness
+            bytes: 2
+            endianness: "big"
+          # Output type: Constant - same light output at different color temperatures.
+          - type: constant
+            value: 0
+          - type: hue
+            bytes: 2
+            endianness: "big"
+          - type: saturation
+            bytes: 2
+            endianness: "big"
+            offset: 1
+          # HSI Colorspace = Device
+          - type: constant
+            value: 0
+          - type: color_temp_kelvin
+            bytes: 2
+            endianness: "big"
+
+          # - type: brightness
+          #   bytes: 2
+          #   endianness: "big"
+
+          # # Tint = Neutral
+          # - type: constant
+          #   value: 0
+          # - type: constant
+          #   value: 0
+          # # Technically crossfade. Not sure it works.
+          # - type: saturation
+          #   bytes: 2
+          #   endianness: "big"
+          # - type: hue
+          #   bytes: 2
+          #   endianness: "big"
+          # # Saturation = 100%
+          # - type: constant
+          #   value: 0
+          # - type: constant
+          #   value: 0
+          # - type: brightness
+          #   bytes: 2
+          #   endianness: "big"
+          #   offset: 21845
+          # # HSI Colorspace = Device
+          # - type: constant
+          #   value: 0
+          # # HSI Device Whitepoint = 2800K
+          # - type: constant
+          #   value: 0
