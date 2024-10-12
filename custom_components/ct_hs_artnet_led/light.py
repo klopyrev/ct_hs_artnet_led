@@ -123,6 +123,15 @@ class DmxLight(LightEntity, RestoreEntity):
         )
 
     @property
+    def extra_state_attributes(self):
+        return {
+            "state_brightness": self._state.brightness,
+            "state_color_temp_kelvin": self._state.color_temp_kelvin,
+            "state_hue": self._state.hue,
+            "state_saturation": self._state.saturation,
+        }
+
+    @property
     def is_on(self) -> bool | None:
         return self._state.brightness > 0
 
