@@ -11,5 +11,5 @@
     "pyartnet==2.0"
   ],
   "loggers": "pyartnet",
-  "version": "0.0.5"
+  "version": "0.0.6"
 }

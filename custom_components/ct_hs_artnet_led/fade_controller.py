@@ -213,20 +213,20 @@ class FadeController:
 
     @staticmethod
     def _hsv_to_lch(hue, saturation_frac, brightness_frac):
-        """Convert HSV to CIE LCHab. Returns [L, C, H] as a list."""
+        """Convert HSV to OKLCH. Returns [L, C, H] as a list."""
         hsv = np.array([hue / 360, saturation_frac, brightness_frac])
         rgb = colour.HSV_to_RGB(hsv)
         xyz = colour.sRGB_to_XYZ(rgb)
-        lab = colour.XYZ_to_Lab(xyz)
-        lch = colour.Lab_to_LCHab(lab)
-        return [float(lch[0]), float(lch[1]), float(lch[2])]
+        oklab = colour.XYZ_to_Oklab(xyz)
+        oklch = colour.Lab_to_LCHab(oklab)  # Generic Cartesian→polar.
+        return [float(oklch[0]), float(oklch[1]), float(oklch[2])]
 
     @staticmethod
     def _lch_to_hsv(lch):
-        """Convert CIE LCHab to HSV. Returns (hue, saturation_frac, brightness_frac)."""
+        """Convert OKLCH to HSV. Returns (hue, saturation_frac, brightness_frac)."""
         lch_arr = np.array(lch)
-        lab = colour.LCHab_to_Lab(lch_arr)
-        xyz = colour.Lab_to_XYZ(lab)
+        oklab = colour.LCHab_to_Lab(lch_arr)  # Generic polar→Cartesian.
+        xyz = colour.Oklab_to_XYZ(oklab)
         rgb = colour.XYZ_to_sRGB(xyz)
         hsv = colour.RGB_to_HSV(rgb)
         return float(hsv[0]) * 360, float(hsv[1]), float(hsv[2])

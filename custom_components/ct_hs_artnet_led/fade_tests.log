@@ -2,54 +2,54 @@
 ============================================================
 Running: Hue fade crossing 0
 ============================================================
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50, ct=4000, hue=0, sat=100, l=25.4, c=61.1, h=38.3
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=360, sat=100.0, l=25.4, c=61.1, h=38.3
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.4, ct=4000, hue=353, sat=100.0, l=25.5, c=59.1, h=33.9
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.6, ct=4000, hue=348, sat=100.0, l=25.6, c=57.2, h=29.5
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.6, ct=4000, hue=345, sat=100.0, l=25.7, c=55.2, h=25.0
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.4, ct=4000, hue=342, sat=100.0, l=25.8, c=53.3, h=20.6
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=340, sat=100.0, l=25.9, c=51.3, h=16.1
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=340, sat=100.0, l=25.9, c=51.3, h=16.1
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50, ct=4000, hue=0, sat=100, l=0.4, c=0.2, h=29.2
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=360, sat=100.0, l=0.4, c=0.2, h=29.2
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.1, ct=4000, hue=354, sat=100.0, l=0.4, c=0.2, h=26.0
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.2, ct=4000, hue=349, sat=100.0, l=0.4, c=0.2, h=22.7
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.2, ct=4000, hue=346, sat=100.0, l=0.4, c=0.2, h=19.5
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.1, ct=4000, hue=343, sat=100.0, l=0.4, c=0.2, h=16.3
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=340, sat=100.0, l=0.4, c=0.2, h=13.0
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=340, sat=100.0, l=0.4, c=0.2, h=13.0
 DEBUG:ct_hs_artnet_led.fade_controller:intended_fps=50, actual_fps=50
 
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=340, sat=100.0, l=25.9, c=51.3, h=16.1
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=340, sat=100.0, l=25.9, c=51.4, h=16.2
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.4, ct=4000, hue=342, sat=100.0, l=25.8, c=53.3, h=20.6
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.6, ct=4000, hue=345, sat=100.0, l=25.7, c=55.2, h=25.0
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.6, ct=4000, hue=348, sat=100.0, l=25.6, c=57.2, h=29.5
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.4, ct=4000, hue=353, sat=100.0, l=25.5, c=59.1, h=33.9
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=0, sat=100.0, l=25.4, c=61.1, h=38.3
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=0, sat=100.0, l=25.4, c=61.1, h=38.3
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=340, sat=100.0, l=0.4, c=0.2, h=13.0
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=340, sat=100.0, l=0.4, c=0.2, h=13.1
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.1, ct=4000, hue=343, sat=100.0, l=0.4, c=0.2, h=16.3
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.2, ct=4000, hue=346, sat=100.0, l=0.4, c=0.2, h=19.5
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.2, ct=4000, hue=349, sat=100.0, l=0.4, c=0.2, h=22.7
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.1, ct=4000, hue=354, sat=100.0, l=0.4, c=0.2, h=26.0
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=0, sat=100.0, l=0.4, c=0.2, h=29.2
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=0, sat=100.0, l=0.4, c=0.2, h=29.2
 DEBUG:ct_hs_artnet_led.fade_controller:intended_fps=50, actual_fps=50
 
 ============================================================
 Running: LCH hue crossing 0
 ============================================================
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50, ct=4000, hue=329, sat=100, l=26.6, c=51.0, h=359.0
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.1, ct=4000, hue=329, sat=100.0, l=26.5, c=51.2, h=359.8
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=359, sat=100.0, l=25.4, c=60.6, h=37.7
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=359, sat=100.0, l=25.4, c=60.6, h=37.7
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50, ct=4000, hue=329, sat=100, l=0.4, c=0.2, h=359.4
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=329, sat=100.0, l=0.4, c=0.2, h=360.0
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=359, sat=100.0, l=0.4, c=0.2, h=28.7
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=359, sat=100.0, l=0.4, c=0.2, h=28.7
 DEBUG:ct_hs_artnet_led.fade_controller:intended_fps=50, actual_fps=51
 
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=359, sat=100.0, l=25.4, c=60.6, h=37.7
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.1, ct=4000, hue=358, sat=100.0, l=25.5, c=60.4, h=36.9
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=329, sat=100.0, l=26.6, c=51.0, h=359.0
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=329, sat=100.0, l=26.6, c=51.0, h=359.0
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=359, sat=100.0, l=0.4, c=0.2, h=28.7
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=358, sat=100.0, l=0.4, c=0.2, h=28.1
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=329, sat=100.0, l=0.4, c=0.2, h=359.4
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=329, sat=100.0, l=0.4, c=0.2, h=359.4
 DEBUG:ct_hs_artnet_led.fade_controller:intended_fps=50, actual_fps=51
 
 ============================================================
 Running: 180 degree fade
 ============================================================
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50, ct=4000, hue=0, sat=100, l=25.4, c=61.1, h=38.3
-DEBUG:ct_hs_artnet_led.fade_controller:bright=49.5, ct=4000, hue=7, sat=100.0, l=25.9, c=60.5, h=41.5
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=180, sat=100.0, l=48.1, c=30.0, h=196.4
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=180, sat=100.0, l=48.1, c=30.0, h=196.4
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50, ct=4000, hue=0, sat=100, l=0.4, c=0.2, h=29.2
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.2, ct=4000, hue=7, sat=100.0, l=0.4, c=0.2, h=32.5
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=180, sat=100.0, l=0.5, c=0.1, h=194.8
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=180, sat=100.0, l=0.5, c=0.1, h=194.8
 DEBUG:ct_hs_artnet_led.fade_controller:intended_fps=50, actual_fps=51
 
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=180, sat=100.0, l=48.1, c=30.0, h=196.4
-DEBUG:ct_hs_artnet_led.fade_controller:bright=49.7, ct=4000, hue=179, sat=100.0, l=47.6, c=30.6, h=193.2
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=0, sat=100.0, l=25.4, c=61.1, h=38.3
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=0, sat=100.0, l=25.4, c=61.1, h=38.3
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=180, sat=100.0, l=0.5, c=0.1, h=194.8
+DEBUG:ct_hs_artnet_led.fade_controller:bright=49.8, ct=4000, hue=178, sat=100.0, l=0.5, c=0.1, h=191.5
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=0, sat=100.0, l=0.4, c=0.2, h=29.2
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=0, sat=100.0, l=0.4, c=0.2, h=29.2
 DEBUG:ct_hs_artnet_led.fade_controller:intended_fps=50, actual_fps=51
 
 ============================================================
@@ -137,73 +137,73 @@ DEBUG:ct_hs_artnet_led.fade_controller:intended_fps=50, actual_fps=50
 ============================================================
 Running: Small hue change (no zero crossing)
 ============================================================
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50, ct=4000, hue=30, sat=100, l=34.4, c=50.7, h=61.9
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.1, ct=4000, hue=30, sat=100.0, l=34.5, c=50.8, h=62.3
-DEBUG:ct_hs_artnet_led.fade_controller:bright=51.8, ct=4000, hue=45, sat=100.0, l=43.0, c=54.3, h=82.4
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=60, sat=100.0, l=51.7, c=58.0, h=102.8
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=60, sat=100.0, l=51.7, c=58.0, h=102.8
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50, ct=4000, hue=30, sat=100, l=0.4, c=0.1, h=55.5
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.1, ct=4000, hue=30, sat=100.0, l=0.4, c=0.1, h=56.0
+DEBUG:ct_hs_artnet_led.fade_controller:bright=52.9, ct=4000, hue=46, sat=100.0, l=0.5, c=0.1, h=82.6
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=60, sat=100.0, l=0.6, c=0.1, h=109.8
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=60, sat=100.0, l=0.6, c=0.1, h=109.8
 DEBUG:ct_hs_artnet_led.fade_controller:intended_fps=50, actual_fps=50
 
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=60, sat=100.0, l=51.7, c=58.0, h=102.9
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.1, ct=4000, hue=60, sat=100.0, l=51.5, c=57.9, h=102.4
-DEBUG:ct_hs_artnet_led.fade_controller:bright=51.8, ct=4000, hue=45, sat=100.0, l=43.0, c=54.3, h=82.4
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=30, sat=100.0, l=34.4, c=50.7, h=61.9
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=30, sat=100.0, l=34.4, c=50.7, h=61.9
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=60, sat=100.0, l=0.6, c=0.1, h=109.8
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.1, ct=4000, hue=60, sat=100.0, l=0.6, c=0.1, h=109.2
+DEBUG:ct_hs_artnet_led.fade_controller:bright=52.9, ct=4000, hue=46, sat=100.0, l=0.5, c=0.1, h=82.6
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=30, sat=100.0, l=0.4, c=0.1, h=55.5
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=30, sat=100.0, l=0.4, c=0.1, h=55.5
 DEBUG:ct_hs_artnet_led.fade_controller:intended_fps=50, actual_fps=50
 
 ============================================================
 Running: Hue fade green to blue
 ============================================================
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50, ct=4000, hue=120, sat=100, l=46.1, c=71.7, h=136.0
-DEBUG:ct_hs_artnet_led.fade_controller:bright=49.9, ct=4000, hue=128, sat=100.0, l=45.8, c=71.7, h=137.1
-DEBUG:ct_hs_artnet_led.fade_controller:bright=42.1, ct=4000, hue=180, sat=100.0, l=35.0, c=74.4, h=192.8
-DEBUG:ct_hs_artnet_led.fade_controller:bright=66.4, ct=4000, hue=187, sat=100.0, l=23.9, c=77.2, h=249.5
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=240, sat=100.0, l=12.9, c=80.0, h=306.3
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=240, sat=100.0, l=12.9, c=80.0, h=306.3
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50, ct=4000, hue=120, sat=100, l=0.5, c=0.2, h=142.5
+DEBUG:ct_hs_artnet_led.fade_controller:bright=49.9, ct=4000, hue=128, sat=100.0, l=0.5, c=0.2, h=143.3
+DEBUG:ct_hs_artnet_led.fade_controller:bright=42.6, ct=4000, hue=177, sat=100.0, l=0.4, c=0.2, h=183.0
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.1, ct=4000, hue=191, sat=100.0, l=0.4, c=0.2, h=223.6
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=240, sat=100.0, l=0.3, c=0.2, h=264.1
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=240, sat=100.0, l=0.3, c=0.2, h=264.1
 DEBUG:ct_hs_artnet_led.fade_controller:intended_fps=50, actual_fps=50
 
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=240, sat=100.0, l=12.9, c=80.0, h=306.3
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.8, ct=4000, hue=232, sat=100.0, l=13.1, c=80.0, h=305.2
-DEBUG:ct_hs_artnet_led.fade_controller:bright=66.4, ct=4000, hue=187, sat=100.0, l=23.9, c=77.2, h=249.5
-DEBUG:ct_hs_artnet_led.fade_controller:bright=42.1, ct=4000, hue=180, sat=100.0, l=35.0, c=74.4, h=192.8
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=120, sat=100.0, l=46.1, c=71.7, h=136.0
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=120, sat=100.0, l=46.1, c=71.7, h=136.0
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=240, sat=100.0, l=0.3, c=0.2, h=264.1
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.2, ct=4000, hue=238, sat=100.0, l=0.3, c=0.2, h=263.3
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.1, ct=4000, hue=191, sat=100.0, l=0.4, c=0.2, h=223.6
+DEBUG:ct_hs_artnet_led.fade_controller:bright=42.6, ct=4000, hue=177, sat=100.0, l=0.4, c=0.2, h=183.0
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=120, sat=100.0, l=0.5, c=0.2, h=142.5
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=120, sat=100.0, l=0.5, c=0.2, h=142.5
 DEBUG:ct_hs_artnet_led.fade_controller:intended_fps=50, actual_fps=50
 
 ============================================================
 Running: Hue fade at partial saturation
 ============================================================
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50, ct=4000, hue=0, sat=50, l=35.1, c=30.2, h=24.7
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=2, sat=50.7, l=35.3, c=30.1, h=26.5
-DEBUG:ct_hs_artnet_led.fade_controller:bright=40.4, ct=4000, hue=66, sat=42.4, l=42.3, c=25.8, h=111.0
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=180, sat=50.0, l=49.4, c=21.3, h=197.2
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=180, sat=50.0, l=49.4, c=21.3, h=197.2
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50, ct=4000, hue=0, sat=50, l=0.5, c=0.1, h=21.1
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.1, ct=4000, hue=2, sat=51.1, l=0.5, c=0.1, h=22.9
+DEBUG:ct_hs_artnet_led.fade_controller:bright=40.9, ct=4000, hue=59, sat=53.8, l=0.5, c=0.1, h=108.3
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=180, sat=50.0, l=0.6, c=0.1, h=195.5
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=180, sat=50.0, l=0.6, c=0.1, h=195.5
 DEBUG:ct_hs_artnet_led.fade_controller:intended_fps=50, actual_fps=50
 
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=180, sat=50.0, l=49.4, c=21.3, h=197.2
-DEBUG:ct_hs_artnet_led.fade_controller:bright=49.9, ct=4000, hue=179, sat=50.0, l=49.3, c=21.4, h=195.5
-DEBUG:ct_hs_artnet_led.fade_controller:bright=40.4, ct=4000, hue=66, sat=42.4, l=42.3, c=25.8, h=111.0
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=0, sat=50.0, l=35.1, c=30.2, h=24.7
-DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=0, sat=50.0, l=35.1, c=30.2, h=24.7
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=180, sat=50.0, l=0.6, c=0.1, h=195.5
+DEBUG:ct_hs_artnet_led.fade_controller:bright=49.9, ct=4000, hue=179, sat=50.2, l=0.6, c=0.1, h=193.7
+DEBUG:ct_hs_artnet_led.fade_controller:bright=40.9, ct=4000, hue=59, sat=53.8, l=0.5, c=0.1, h=108.3
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=0, sat=50.0, l=0.5, c=0.1, h=21.1
+DEBUG:ct_hs_artnet_led.fade_controller:bright=50.0, ct=4000, hue=0, sat=50.0, l=0.5, c=0.1, h=21.1
 DEBUG:ct_hs_artnet_led.fade_controller:intended_fps=50, actual_fps=50
 
 ============================================================
 Running: Hue fade at low brightness
 ============================================================
-DEBUG:ct_hs_artnet_led.fade_controller:bright=20, ct=4000, hue=0, sat=100, l=6.4, c=27.1, h=21.8
-DEBUG:ct_hs_artnet_led.fade_controller:bright=20.0, ct=4000, hue=359, sat=100.0, l=6.3, c=27.1, h=21.2
-DEBUG:ct_hs_artnet_led.fade_controller:bright=18.8, ct=4000, hue=328, sat=100.0, l=5.0, c=29.3, h=353.4
-DEBUG:ct_hs_artnet_led.fade_controller:bright=15.0, ct=4000, hue=297, sat=100.0, l=3.6, c=31.5, h=325.1
-DEBUG:ct_hs_artnet_led.fade_controller:bright=20.0, ct=4000, hue=240, sat=100.0, l=2.2, c=33.7, h=296.8
-DEBUG:ct_hs_artnet_led.fade_controller:bright=20.0, ct=4000, hue=240, sat=100.0, l=2.2, c=33.7, h=296.8
+DEBUG:ct_hs_artnet_led.fade_controller:bright=20, ct=4000, hue=0, sat=100, l=0.2, c=0.1, h=29.2
+DEBUG:ct_hs_artnet_led.fade_controller:bright=20.0, ct=4000, hue=359, sat=100.0, l=0.2, c=0.1, h=28.4
+DEBUG:ct_hs_artnet_led.fade_controller:bright=16.6, ct=4000, hue=323, sat=100.0, l=0.2, c=0.1, h=347.5
+DEBUG:ct_hs_artnet_led.fade_controller:bright=17.7, ct=4000, hue=274, sat=100.0, l=0.2, c=0.1, h=305.8
+DEBUG:ct_hs_artnet_led.fade_controller:bright=20.0, ct=4000, hue=240, sat=100.0, l=0.1, c=0.1, h=264.1
+DEBUG:ct_hs_artnet_led.fade_controller:bright=20.0, ct=4000, hue=240, sat=100.0, l=0.1, c=0.1, h=264.1
 DEBUG:ct_hs_artnet_led.fade_controller:intended_fps=50, actual_fps=50
 
-DEBUG:ct_hs_artnet_led.fade_controller:bright=20.0, ct=4000, hue=240, sat=100.0, l=2.2, c=33.7, h=296.8
-DEBUG:ct_hs_artnet_led.fade_controller:bright=19.9, ct=4000, hue=242, sat=100.0, l=2.2, c=33.6, h=297.3
-DEBUG:ct_hs_artnet_led.fade_controller:bright=15.0, ct=4000, hue=297, sat=100.0, l=3.6, c=31.5, h=325.1
-DEBUG:ct_hs_artnet_led.fade_controller:bright=18.8, ct=4000, hue=328, sat=100.0, l=5.0, c=29.3, h=353.4
-DEBUG:ct_hs_artnet_led.fade_controller:bright=20.0, ct=4000, hue=0, sat=100.0, l=6.4, c=27.1, h=21.8
-DEBUG:ct_hs_artnet_led.fade_controller:bright=20.0, ct=4000, hue=0, sat=100.0, l=6.4, c=27.1, h=21.8
+DEBUG:ct_hs_artnet_led.fade_controller:bright=20.0, ct=4000, hue=240, sat=100.0, l=0.1, c=0.1, h=264.1
+DEBUG:ct_hs_artnet_led.fade_controller:bright=20.0, ct=4000, hue=241, sat=100.0, l=0.1, c=0.1, h=264.9
+DEBUG:ct_hs_artnet_led.fade_controller:bright=17.7, ct=4000, hue=274, sat=100.0, l=0.2, c=0.1, h=305.8
+DEBUG:ct_hs_artnet_led.fade_controller:bright=16.6, ct=4000, hue=323, sat=100.0, l=0.2, c=0.1, h=347.5
+DEBUG:ct_hs_artnet_led.fade_controller:bright=20.0, ct=4000, hue=0, sat=100.0, l=0.2, c=0.1, h=29.2
+DEBUG:ct_hs_artnet_led.fade_controller:bright=20.0, ct=4000, hue=0, sat=100.0, l=0.2, c=0.1, h=29.2
 DEBUG:ct_hs_artnet_led.fade_controller:intended_fps=50, actual_fps=50
 
 ============================================================
