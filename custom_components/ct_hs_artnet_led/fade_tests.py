@@ -231,26 +231,26 @@ async def main():
 
     entity_config = config["light"][0]["entities"][0]
 
-    node = pyartnet.ArtNetNode(
-        ip=config["light"][0]["ip"],
+    async with pyartnet.ArtNetNode.create(
+        host=config["light"][0]["ip"],
         port=config["light"][0]["port"],
         max_fps=CALC_FPS,
         refresh_every=0,
-        start_refresh_task=False,
-    )
-    universe = node.add_universe(config["light"][0]["universe"])
-    channel = universe.add_channel(
-        start=entity_config["channel"],
-        width=coders.num_channels(),
-        byte_size=1,
-    )
+    ) as node:
+        await node.stop_refresh()
+        universe = node.add_universe(config["light"][0]["universe"])
+        channel = universe.add_channel(
+            start=entity_config["channel"],
+            width=coders.num_channels(),
+            byte_size=1,
+        )
 
-    for test in TESTS:
-        await run_test(test, coders, channel)
+        for test in TESTS:
+            await run_test(test, coders, channel)
 
-    print(f"\n{'='*60}")
-    print(f"All {len(TESTS)} tests completed.")
-    print(f"{'='*60}")
+        print(f"\n{'='*60}")
+        print(f"All {len(TESTS)} tests completed.")
+        print(f"{'='*60}")
 
 
 if __name__ == "__main__":

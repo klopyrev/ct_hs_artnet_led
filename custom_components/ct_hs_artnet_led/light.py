@@ -40,15 +40,19 @@ async def async_setup_platform(
     async_add_entities: AddEntitiesCallback,
     discovery_info: DiscoveryInfoType | None = None,
 ):
-    pyartnet.base.CREATE_TASK = hass.async_create_task
+    # pyartnet expects the created asyncio task to be the task running its wrapper.
+    # Home Assistant's task factory can wrap tasks, which breaks pyartnet's assertions.
+    pyartnet.base.background_task.CREATE_TASK = asyncio.create_task
 
-    node = pyartnet.ArtNetNode(
-        ip=config["ip"],
+    node = pyartnet.ArtNetNode.create(
+        host=config["ip"],
         port=config["port"],
         max_fps=config["check_fps"],
         refresh_every=config["resend_universe_every_secs"],
-        start_refresh_task=config["resend_universe_every_secs"] > 0,
     )
+    await node.__aenter__()
+    if not config["resend_universe_every_secs"]:
+        await node.stop_refresh()
     universe = node.add_universe(config["universe"])
 
     types = {}
