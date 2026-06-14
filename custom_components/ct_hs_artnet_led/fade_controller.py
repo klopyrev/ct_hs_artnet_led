@@ -1,10 +1,13 @@
 from collections.abc import Callable
-import colormath.color_objects
-import colormath.color_conversions
+import warnings
+warnings.filterwarnings("ignore", module="colour")
+import colour
 import copy
 from enum import Enum
 import logging
 from time import time
+
+import numpy as np
 
 import pyartnet
 
@@ -119,15 +122,18 @@ class FadeController:
             self._debug_print_state()
 
     def _debug_print_state(self):
+        if not log.isEnabledFor(logging.DEBUG):
+            return
+
         if self._fade_type == FadeType.HUE_FADE:
             log.debug(
                 f"bright={round(self._current_state.brightness, 1)}, "
                 f"ct={round(self._current_state.color_temp_kelvin)}, "
                 f"hue={round(self._current_state.hue)}, "
                 f"sat={round(self._current_state.saturation, 1)}, "
-                f"l={round(self._current_lch.lch_l, 1)}, "
-                f"c={round(self._current_lch.lch_c, 1)}, "
-                f"h={round(self._current_lch.lch_h, 1)}"
+                f"l={round(self._current_lch[0], 1)}, "
+                f"c={round(self._current_lch[1], 1)}, "
+                f"h={round(self._current_lch[2], 1)}"
             )
         else:
             log.debug(
@@ -205,43 +211,55 @@ class FadeController:
         if is_last_step:
             self._current_state.hue = self._target_state.hue
 
+    @staticmethod
+    def _hsv_to_lch(hue, saturation_frac, brightness_frac):
+        """Convert HSV to CIE LCHab. Returns [L, C, H] as a list."""
+        hsv = np.array([hue / 360, saturation_frac, brightness_frac])
+        rgb = colour.HSV_to_RGB(hsv)
+        xyz = colour.sRGB_to_XYZ(rgb)
+        lab = colour.XYZ_to_Lab(xyz)
+        lch = colour.Lab_to_LCHab(lab)
+        return [float(lch[0]), float(lch[1]), float(lch[2])]
+
+    @staticmethod
+    def _lch_to_hsv(lch):
+        """Convert CIE LCHab to HSV. Returns (hue, saturation_frac, brightness_frac)."""
+        lch_arr = np.array(lch)
+        lab = colour.LCHab_to_Lab(lch_arr)
+        xyz = colour.Lab_to_XYZ(lab)
+        rgb = colour.XYZ_to_sRGB(xyz)
+        hsv = colour.RGB_to_HSV(rgb)
+        return float(hsv[0]) * 360, float(hsv[1]), float(hsv[2])
+
     def _init_hue_fade(self):
-        current_hsv = colormath.color_objects.HSVColor(
+        self._current_lch = self._hsv_to_lch(
             self._current_state.hue,
             self._current_state.saturation / 100,
             self._current_state.brightness / 100,
         )
-        self._current_lch = colormath.color_conversions.convert_color(
-            current_hsv, colormath.color_objects.LCHabColor
-        )
-        target_hsv = colormath.color_objects.HSVColor(
+        self._target_lch = self._hsv_to_lch(
             self._target_state.hue,
             self._target_state.saturation / 100,
             self._target_state.brightness / 100,
-        )
-        self._target_lch = colormath.color_conversions.convert_color(
-            target_hsv, colormath.color_objects.LCHabColor
         )
 
     def _hue_fade(self, travel_fraction, is_first_step, is_last_step):
         # Color temperature fades independently.
         self._linear_fade_color_temp(travel_fraction)
 
-        self._current_lch.lch_l = self._compute_linear_update(
-            self._current_lch.lch_l, self._target_lch.lch_l, travel_fraction
+        self._current_lch[0] = self._compute_linear_update(
+            self._current_lch[0], self._target_lch[0], travel_fraction
         )
-        self._current_lch.lch_c = self._compute_linear_update(
-            self._current_lch.lch_c, self._target_lch.lch_c, travel_fraction
+        self._current_lch[1] = self._compute_linear_update(
+            self._current_lch[1], self._target_lch[1], travel_fraction
         )
-        self._current_lch.lch_h = self._compute_hue_linear_update(
-            self._current_lch.lch_h, self._target_lch.lch_h, travel_fraction
+        self._current_lch[2] = self._compute_hue_linear_update(
+            self._current_lch[2], self._target_lch[2], travel_fraction
         )
-        current_hsv = colormath.color_conversions.convert_color(
-            self._current_lch, colormath.color_objects.HSVColor
-        )
-        self._current_state.hue = current_hsv.hsv_h
-        self._current_state.saturation = current_hsv.hsv_s * 100
-        self._current_state.brightness = current_hsv.hsv_v * 100
+        hue, sat_frac, bright_frac = self._lch_to_hsv(self._current_lch)
+        self._current_state.hue = hue
+        self._current_state.saturation = min(max(sat_frac * 100.0, 0.0), 100.0)
+        self._current_state.brightness = min(max(bright_frac * 100.0, 0.0), 100.0)
 
     def _other_fade(self, travel_fraction, is_first_step, is_last_step):
         self._linear_fade_brightness(travel_fraction)

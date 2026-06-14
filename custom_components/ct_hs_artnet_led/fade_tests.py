@@ -3,6 +3,7 @@
 
 import asyncio
 import copy
+from dataclasses import dataclass
 import logging
 import yaml
 
@@ -14,122 +15,178 @@ CALC_FPS = 1000
 FADE_FPS = 50
 UPDATE_STATE_FREQUENCY_SECS = 1
 
-# Hue fade crossing 0.
-# START_BRIGHTNESS = 50
-# START_COLOR_TEMP = 4000
-# START_HUE = 0
-# START_SATURATION = 100
-# END_BRIGHTNESS = 50
-# END_COLOR_TEMP = 4000
-# END_HUE = 340
-# END_SATURATION = 100
-# FADE_DURATION_SECS = 5
 
-# LCH hue crossing 0
-# START_BRIGHTNESS = 50
-# START_COLOR_TEMP = 4000
-# START_HUE = 329
-# START_SATURATION = 100
-# END_BRIGHTNESS = 50
-# END_COLOR_TEMP = 4000
-# END_HUE = 359
-# END_SATURATION = 100
-# FADE_DURATION_SECS = 1
-# WAIT_SECS = 5
-
-# 180 degree fade
-# START_BRIGHTNESS = 50
-# START_COLOR_TEMP = 4000
-# START_HUE = 0
-# START_SATURATION = 100
-# END_BRIGHTNESS = 50
-# END_COLOR_TEMP = 4000
-# END_HUE = 180
-# END_SATURATION = 100
-# FADE_DURATION_SECS = 1
-# WAIT_SECS = 2
-
-# Saturation fade
-# START_BRIGHTNESS = 50
-# START_COLOR_TEMP = 4000
-# START_HUE = 0
-# START_SATURATION = 10
-# END_BRIGHTNESS = 50
-# END_COLOR_TEMP = 4000
-# END_HUE = 0
-# END_SATURATION = 90
-# FADE_DURATION_SECS = 5
-# WAIT_SECS = 1
-
-# Brightness and color temperature change.
-# START_BRIGHTNESS = 3
-# START_COLOR_TEMP = 2100
-# START_HUE = 0
-# START_SATURATION = 0
-# END_BRIGHTNESS = 100
-# END_COLOR_TEMP = 5500
-# END_HUE = 0
-# END_SATURATION = 0
-# FADE_DURATION_SECS = 4
-# WAIT_SECS = 1
-
-# Saturated to unsaturated fade, and back.
-START_BRIGHTNESS = 130
-START_COLOR_TEMP = 2089
-START_HUE = 22.824
-START_SATURATION = 100.0
-END_BRIGHTNESS = 255
-END_COLOR_TEMP = 5516
-END_HUE = 22.824
-END_SATURATION = 0
-FADE_DURATION_SECS = 1
-WAIT_SECS = 1
-
-# Off to on and back.
-# START_BRIGHTNESS = 0
-# START_COLOR_TEMP = 1750
-# START_HUE = 0
-# START_SATURATION = 0
-# END_BRIGHTNESS = 70
-# END_COLOR_TEMP = 4000
-# END_HUE = 340
-# END_SATURATION = 50
-# FADE_DURATION_SECS = 5
-# WAIT_SECS = 1
+@dataclass
+class FadeTest:
+    name: str
+    start_brightness: float
+    start_color_temp: float
+    start_hue: float
+    start_saturation: float
+    end_brightness: float
+    end_color_temp: float
+    end_hue: float
+    end_saturation: float
+    fade_duration_secs: float
+    wait_secs: float = 1
 
 
-async def main():
-    logging.basicConfig(level=logging.INFO)
-    logging.getLogger("ct_hs_artnet_led").setLevel(level=logging.DEBUG)
-    # logging.getLogger("pyartnet").setLevel(level=logging.DEBUG)
+TESTS = [
+    FadeTest(
+        name="Hue fade crossing 0",
+        start_brightness=50,
+        start_color_temp=4000,
+        start_hue=0,
+        start_saturation=100,
+        end_brightness=50,
+        end_color_temp=4000,
+        end_hue=340,
+        end_saturation=100,
+        fade_duration_secs=5,
+    ),
+    FadeTest(
+        name="LCH hue crossing 0",
+        start_brightness=50,
+        start_color_temp=4000,
+        start_hue=329,
+        start_saturation=100,
+        end_brightness=50,
+        end_color_temp=4000,
+        end_hue=359,
+        end_saturation=100,
+        fade_duration_secs=1,
+        wait_secs=5,
+    ),
+    FadeTest(
+        name="180 degree fade",
+        start_brightness=50,
+        start_color_temp=4000,
+        start_hue=0,
+        start_saturation=100,
+        end_brightness=50,
+        end_color_temp=4000,
+        end_hue=180,
+        end_saturation=100,
+        fade_duration_secs=1,
+        wait_secs=2,
+    ),
+    FadeTest(
+        name="Saturation fade",
+        start_brightness=50,
+        start_color_temp=4000,
+        start_hue=0,
+        start_saturation=10,
+        end_brightness=50,
+        end_color_temp=4000,
+        end_hue=0,
+        end_saturation=90,
+        fade_duration_secs=5,
+    ),
+    FadeTest(
+        name="Brightness and color temperature change",
+        start_brightness=3,
+        start_color_temp=2100,
+        start_hue=0,
+        start_saturation=0,
+        end_brightness=100,
+        end_color_temp=5500,
+        end_hue=0,
+        end_saturation=0,
+        fade_duration_secs=4,
+    ),
+    FadeTest(
+        name="Saturated to unsaturated fade, and back",
+        start_brightness=130,
+        start_color_temp=2089,
+        start_hue=22.824,
+        start_saturation=100.0,
+        end_brightness=255,
+        end_color_temp=5516,
+        end_hue=22.824,
+        end_saturation=0,
+        fade_duration_secs=1,
+    ),
+    FadeTest(
+        name="Off to on and back",
+        start_brightness=0,
+        start_color_temp=1750,
+        start_hue=0,
+        start_saturation=0,
+        end_brightness=70,
+        end_color_temp=4000,
+        end_hue=340,
+        end_saturation=50,
+        fade_duration_secs=5,
+    ),
+    # ── Additional hue fade cases (exercises colormath path) ─────────
+    FadeTest(
+        name="Small hue change (no zero crossing)",
+        start_brightness=50,
+        start_color_temp=4000,
+        start_hue=30,
+        start_saturation=100,
+        end_brightness=50,
+        end_color_temp=4000,
+        end_hue=60,
+        end_saturation=100,
+        fade_duration_secs=2,
+    ),
+    FadeTest(
+        name="Hue fade green to blue",
+        start_brightness=50,
+        start_color_temp=4000,
+        start_hue=120,
+        start_saturation=100,
+        end_brightness=50,
+        end_color_temp=4000,
+        end_hue=240,
+        end_saturation=100,
+        fade_duration_secs=3,
+    ),
+    FadeTest(
+        name="Hue fade at partial saturation",
+        start_brightness=50,
+        start_color_temp=4000,
+        start_hue=0,
+        start_saturation=50,
+        end_brightness=50,
+        end_color_temp=4000,
+        end_hue=180,
+        end_saturation=50,
+        fade_duration_secs=2,
+    ),
+    FadeTest(
+        name="Hue fade at low brightness",
+        start_brightness=20,
+        start_color_temp=4000,
+        start_hue=0,
+        start_saturation=100,
+        end_brightness=20,
+        end_color_temp=4000,
+        end_hue=240,
+        end_saturation=100,
+        fade_duration_secs=3,
+    ),
+]
 
-    with open("ct_hs_artnet_led/test_config.yaml", encoding="ascii") as f:
-        config = yaml.safe_load(f)
-        type_config = config["light"][0]["types"][0]
-        assert type_config["name"] == "astera"
-        coders = ChannelCoders(type_config)
 
-    node = pyartnet.ArtNetNode(
-        ip="192.168.1.6",
-        port=6454,
-        max_fps=CALC_FPS,
-        refresh_every=0,
-        start_refresh_task=False,
-    )
-    universe = node.add_universe(0)
-    channel = universe.add_channel(start=1, width=coders.num_channels(), byte_size=1)
+async def run_test(test: FadeTest, coders: ChannelCoders, channel):
+    print(f"\n{'='*60}")
+    print(f"Running: {test.name}")
+    print(f"{'='*60}")
+    await asyncio.sleep(3)
 
     start_state = DmxLightState(
-        brightness=START_BRIGHTNESS,
-        color_temp_kelvin=START_COLOR_TEMP,
-        hue=START_HUE,
-        saturation=START_SATURATION,
+        brightness=test.start_brightness,
+        color_temp_kelvin=test.start_color_temp,
+        hue=test.start_hue,
+        saturation=test.start_saturation,
     )
     end_state = DmxLightState(
-        brightness=END_BRIGHTNESS,
-        color_temp_kelvin=END_COLOR_TEMP,
-        hue=END_HUE,
-        saturation=END_SATURATION,
+        brightness=test.end_brightness,
+        color_temp_kelvin=test.end_color_temp,
+        hue=test.end_hue,
+        saturation=test.end_saturation,
     )
     current_state = copy.deepcopy(start_state)
 
@@ -144,7 +201,7 @@ async def main():
             target_state,
             coders,
             FADE_FPS,
-            FADE_DURATION_SECS,
+            test.fade_duration_secs,
             UPDATE_STATE_FREQUENCY_SECS,
             lambda: None,
         )
@@ -157,8 +214,43 @@ async def main():
         await channel
         if is_first:
             print("")
-            await asyncio.sleep(WAIT_SECS)
+            await asyncio.sleep(test.wait_secs)
             is_first = False
+
+
+async def main():
+    logging.basicConfig(level=logging.INFO)
+    logging.getLogger("ct_hs_artnet_led").setLevel(level=logging.DEBUG)
+    # logging.getLogger("pyartnet").setLevel(level=logging.DEBUG)
+
+    with open("ct_hs_artnet_led/test_config.yaml", encoding="ascii") as f:
+        config = yaml.safe_load(f)
+        type_config = config["light"][0]["types"][0]
+        assert type_config["name"] == "astera"
+        coders = ChannelCoders(type_config)
+
+    entity_config = config["light"][0]["entities"][0]
+
+    node = pyartnet.ArtNetNode(
+        ip=config["light"][0]["ip"],
+        port=config["light"][0]["port"],
+        max_fps=CALC_FPS,
+        refresh_every=0,
+        start_refresh_task=False,
+    )
+    universe = node.add_universe(config["light"][0]["universe"])
+    channel = universe.add_channel(
+        start=entity_config["channel"],
+        width=coders.num_channels(),
+        byte_size=1,
+    )
+
+    for test in TESTS:
+        await run_test(test, coders, channel)
+
+    print(f"\n{'='*60}")
+    print(f"All {len(TESTS)} tests completed.")
+    print(f"{'='*60}")
 
 
 if __name__ == "__main__":

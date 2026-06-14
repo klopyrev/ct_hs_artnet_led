@@ -4,7 +4,7 @@ logger:
 #     pyartnet: debug
 light:
   - platform: ct_hs_artnet_led
-    ip: 192.168.1.6
+    ip: 192.168.4.3
     port: 6454
     universe: 0
 
@@ -30,7 +30,7 @@ light:
     entities:
       - name: Test
         type: astera
-        channel: 1
+        channel: 185
       - name: Aputure
         channel: 269
         type: aputure
